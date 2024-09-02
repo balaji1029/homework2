@@ -48,3 +48,28 @@ If for $k = n-1$, $G_\Sigma(z) = G(z)^k$, then for $k = n$,
 \end{align*}
 
 From the \textit{Principle of Mathematical Induction}, for all $k \in \mathbb{N}$, $G_\Sigma(z) = G(z)^k$
+
+\subsection{Task D}
+
+When $X \sim Geo(p)$, $P[X = n] = (1-p)^{n-1}p$ and $P[X = 0] = 0$.
+
+\begin{align*}
+    G_{Geo}(z) &= \sum_{n=0}^{\infty} P[X = n]z^n \\
+    &= \sum_{n=1}^{\infty} (1-p)^{n-1}pz^n \\
+    &= pz \sum_{n=1}^{\infty} ((1-p)z)^{n-1} \\
+    &= \frac{pz}{1-(1-p)z} \\
+\end{align*}
+
+\subsection{Task E}
+
+$X \sim Bin(n, p)$ and $Y \sim NegBin(n, p)$. $Y = \sum_{k=1}^n Y_k$ where $Y_k \sim Geo(p)$.
+
+\begin{align*}
+    G(Y) &= G(Y_1 + Y_2 + \cdots + Y_n) \\
+    &= G(Y_1)G(Y_2)\cdots G(Y_n) \\
+    &= \left(\frac{pz}{1-(1-p)z}\right)^n \\
+    G_Y^{(n, p)}(z) &= \left(\frac{pz}{1-(1-p)z}\right)^n \\
+    &= \left(\frac{1}{\frac{1}{pz}+(1-\frac{1}{p})}\right)^n \\
+    G_X^{(n, p^{-1})}(z^{-1}) &= \left(\frac{1}{pz}+(1-\frac{1}{p})\right)^n \\
+    \implies G_Y^{(n, p)}(z) &= \left(G_X^{(n, p^{-1})}(z^{-1})\right)^{-1}
+\end{align*}
