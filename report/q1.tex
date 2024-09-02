@@ -1,0 +1,50 @@
+\section{Mathemagic}
+
+\subsection{Task A}
+
+For a Bernoulli random variable $X \sim Ber(p)$, $P[X = 0] = 1-p$, $P[X = 1] = p$ and $P[X = n] = 0 \forall n \geq 2$.
+
+\begin{align*}
+    G_{Ber}(z) &= \sum_{n=0}^{\infty} P[X = n]z^n \\
+    &= P[X=0] + P[X=1]z \\
+    G_{Ber} &= (1-p) + pz
+\end{align*}
+
+\subsection{Task B}
+
+When $X \sim Bin(n, p)$, $P[X=k] = \binom{n}{k} p^k (1-p)^{n-k} \; \forall k \in \mathbb{Z}, 0 \leq k \leq n$. $P[X=k] = 0 \; \forall k > n$.
+
+\begin{align*}
+    G_{Bin}(z) &= \sum_{k=0}^{\infty} P[X = n] z^k \\
+    &= \sum_{k=0}^{n} \binom{n}{k} p^k (1-p)^{n-k} z^k \\
+    &= \sum_{k=0}^{n} \binom{n}{k} (pz)^k (1-p)^{n-k} \\
+    &= (pz + (1-p))^n \\
+    G_{Bin}(z) &= G_{Ber}(z)^n
+\end{align*}
+
+\subsection{Task C}
+
+
+Let $X_1 \text{ and } X_2$ be two random variables which take up non-negative integers and let $X = X_1 + X_2$.
+
+\begin{align*}
+    G_X(z) &= \sum_{n=0}^{\infty} P[X = n] z^n \\
+    &= \sum_{n=0}^{\infty} \sum_{i=0}^{n} (P[X_1=i]P[X_2=n-i])z^n \\
+    &= \sum_{i=0}^{\infty} \sum_{n=i}^{\infty} (P[X_1=i]P[X_2=n-i])z^n \\
+    &= \sum_{i=0}^{\infty} \sum_{n=i}^{\infty} (P[X_1=i]z^i)(P[X_2=n-i]z^{n-i}) \\
+    &= \sum_{i=0}^{\infty} P[X_1=i]z^i \sum_{n=i}^{\infty} P[X_2=n-i]z^{n-i} \\
+    &= \sum_{i=0}^{\infty} P[X_1=i]z^i \sum_{n=0}^{\infty} P[X_2=n]z^{n} \\
+    G_X(z)&= G_{X_1}(z) G_{X_2}(z)
+\end{align*}
+
+For $k = 1$, $G_\Sigma(z) = G(z)^k$.
+
+If for $k = n-1$, $G_\Sigma(z) = G(z)^k$, then for $k = n$, 
+
+\begin{align*}
+    G_\Sigma(z) &= G_{X_1 + X_2 + \cdots + X_{n-1}}(z)G_{X_n}(x) \\ 
+    &= \prod_{i=1}^{n} G_{X_i}(z)
+    G_\Sigma(z) &= G(z)^k
+\end{align*}
+
+From the \textit{Principle of Mathematical Induction}, for all $k \in \mathbb{N}$, $G_\Sigma(z) = G(z)^k$
