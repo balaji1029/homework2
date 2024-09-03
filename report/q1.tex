@@ -73,3 +73,70 @@ $X \sim Bin(n, p)$ and $Y \sim NegBin(n, p)$. $Y = \sum_{k=1}^n Y_k$ where $Y_k 
     G_X^{(n, p^{-1})}(z^{-1}) &= \left(\frac{1}{pz}+(1-\frac{1}{p})\right)^n \\
     \implies G_Y^{(n, p)}(z) &= \left(G_X^{(n, p^{-1})}(z^{-1})\right)^{-1}
 \end{align*}
+
+\subsection{Task F}
+
+$P[Y = k] = \binom{k-1}{n-1} p^n (1-p)^{k-n}$.
+
+\begin{align*}
+    G_Y^{(n, p)}(z) &= \sum_{k=0}^{\infty} P[Y = k]z^k \\
+    &= \sum_{k=n}^{\infty} \binom{k-1}{n-1} p^n (1-p)^{k-n} z^k \\
+    \left(\frac{1}{pz} + \left(1-\frac{1}{p}\right)\right)^{-n} &= \sum_{k=n}^{\infty} \binom{k-1}{n-1} p^n (1-p)^{k-n} z^k
+\end{align*}
+
+Substitute $x = z$, $p = 2$
+
+\begin{align*}
+    \left(\frac{1}{2x} + \frac{1}{2}\right)^{-n} &= \sum_{k=n}^{\infty} \binom{k-1}{n-1} 2^n (-1)^{k-n} x^{k} \\
+    x^n (1+x)^{-n} &= \sum_{k=n}^{\infty} \binom{k-1}{n-1} (-1)^{k-n} x^{k} \\
+    (1+x)^{-n} &= \sum_{k=n}^{\infty} \binom{k-1}{n-1} (-1)^{k-n} x^{k-n} \\
+    (1+x)^{-n} &= \sum_{r=0}^{\infty} \binom{n+r-1}{n-1} (-1)^{r} x^{r} \\
+    (1+x)^{-n} &= \sum_{r=0}^{\infty} \binom{n+r-1}{r} (-1)^{r} x^{r}
+\end{align*}
+
+\subsection{Task G}
+
+\begin{align*}
+    G(z) &= \sum_{n=0}^{\infty} P[X = n]z^n \\
+    G'(z) &= \sum_{n=0}^{\infty} nP[X = n]z^{n-1} \\
+    G'(1) &= \sum_{n=0}^{\infty} nP[X = n] \\
+    G'(1) &= E[X]
+\end{align*}
+
+For Bernoulli random variable $X \sim Ber(p)$,
+
+\begin{align*}
+    G_{Ber}(z) &= (1-p) + pz \\
+    G'_{Ber}(z) &= p \\
+    G'_{Ber}(1) &= p \\
+    E[X] &= p
+\end{align*}
+
+For Binomial random variable $X \sim Bin(n, p)$,
+
+\begin{align*}
+    G_{Bin}(z) &= (pz + (1-p))^n \\
+    G'_{Bin}(z) &= np(pz + (1-p))^{n-1} \\
+    G'_{Bin}(1) &= np \\
+    E[X] &= np
+\end{align*}
+
+\pagebreak
+
+For Geometric random variable $X \sim Geo(p)$,
+
+\begin{align*}
+    G_{Geo}(z) &= \frac{pz}{1-(1-p)z} \\
+    G'_{Geo}(z) &= \frac{p}{(1-(1-p)z)^2} \\
+    G'_{Geo}(1) &= \frac{p}{p^2} \\
+    E[X] &= \frac{1}{p}
+\end{align*}
+
+For Negative Binomial random variable $X \sim NegBin(n, p)$,
+
+\begin{align*}
+    G_{NegBin}(z) &= \left(\frac{pz}{1-(1-p)z}\right)^n \\
+    G'_{NegBin}(z) &= n\left(\frac{pz}{1-(1-p)z}\right)^{n-1} \frac{p}{(1-(1-p)z)^2} \\
+    G'_{NegBin}(1) &= n\left(\frac{p}{p}\right)^{n-1} \frac{p}{p^2} \\
+    E[X] &= \frac{n}{p}
+\end{align*}
