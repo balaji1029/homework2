@@ -80,7 +80,7 @@ as required.
     We will now prove that for independent random variables, $\mathbb{E}[e^{\left(t\sum_{i=1}^n X_i\right)}]=\prod_{i=1}^n \mathbb{E}[e^{tX_i}]$. To prove that, we prove the simpler result that for independent variables, $\mathbb{E}[XY]=\mathbb{E}[X]\mathbb{E}[Y]$.
     \begin{align*}
         \mathbb{E}[XY]&=\int_{-\infty}^{\infty}(xy)p_{X,Y}(x,y) \, dy \, dx\\
-        & = \int_{-\infty}^{\infty}(xy)p_X(x)p_Y(y) \, dy \, dx\\
+        & = \int_{-\infty}^{\infty}(xy)p_X(x)p_Y(y) \, dy \, dx && \text{(For independent RVs, p(xy)=p(x)p(y))}\\
         &= \int_{-\infty}^{\infty}x p_X(x) \int_{-\infty}^{\infty}yp_Y(y) \, dy \, dx\\
         &= \int_{-\infty}^{\infty}x p_X(x) \, dx \int_{-\infty}^{\infty}y p_Y(y) \, dy\\
         &= \mathbb{E}[X]\mathbb{E}[Y]
@@ -175,4 +175,4 @@ If we get any positive value $\sigma$ for the value of $P[\lvert B_n - n\mu\rver
     &= \sigma
 \end{align*}
 which is a contradiction.\\
-Thus, we have proven that $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=0$.\\
+Thus, we have proven that $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=\lim_{n\to \infty}P[\lvert A_n - \mu\rvert > \epsilon]=0$.\\
