@@ -114,7 +114,7 @@ as required.
     %     \ln((1+\delta)^{1+\delta})&=(1+\delta)\ln(1+\delta)\\
     %     &=(1+\delta)(\delta - \delta^2 )
     % \end{align*}
-    \item Since this holds for arbitrary positive t, we can find the t for which the value of $e^{\mu e^t-1-(1+\delta)t}$ is minimum. By differentiation, we observe the minima of the function is when $t=\ln(1+\delta)$. At the minima, we have
+    \item Since this holds for arbitrary positive t, we can find the t for which the value of $e^{\mu (e^t-1-(1+\delta)t)}$ is minimum. By differentiation, we observe the minima of the function is when $t=\ln(1+\delta)$. At the minima, we have
     \begin{align*}
         e^t-1-(1+\delta)t = \delta-(1+\delta)\ln(1+\delta)\\
         % P[Y\ge (1+\delta)\mu]\le \frac{e^{\delta\mu}}{(1+\delta)^{1+\delta}}    
@@ -145,11 +145,34 @@ as required.
     For the last few steps of simplification, https://math.mit.edu/~goemans/18310S15/chernoff-notes.pdf was used as a guide.
 \end{enumerate}
 \subsection{Task E}
+First, let us consider the corner cases where $\mu = 0$ or $\mu = 1$. In these cases, $A_n=0$ or $A_n=1$ always, and the result is trivial.\\ 
+Now we can consider $0 < \mu < 1$.\\
 Consider the random variable $B_n = nA_n$.\\
-We need to prove $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert> n\epsilon]=0$.\\
-Note that we are done if we prove $\lim_{n\to \infty}P[B_n - n\mu > n\epsilon]=0$ and $\lim_{n\to \infty}P[n\mu - B_n > n\epsilon]=0$.\\
+We need to prove $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=0$.\\
+Note that we are done if we prove $\lim_{n\to \infty}P[B_n - n\mu >= n\epsilon]=0$ and $\lim_{n\to \infty}P[n\mu - B_n >= n\epsilon]=0$.\\
 We will prove the first part first, assuming $\mu$ is not 0.\\
 \begin{align*}
     P[B_n \ge n\epsilon + n\mu] &\le e^{-\frac{n\epsilon^2}{2\mu+\epsilon}}\\
 \end{align*}
-For a positive $\mu$ (since the distribution is the sum of Bernoulli RVs) and $\epsilon$ (given), $\frac{\epsilon^2}{2\mu+\epsilon}$ is a positive coefficient. $e^{-n}$ tends to 0 as n tends to $\infty$, which we will use henceforth.
+For a positive $\mu$ (since the distribution is the sum of Bernoulli RVs) and $\epsilon$ (given), $\frac{\epsilon^2}{2\mu+\epsilon}$ is a positive coefficient. $e^{-n}$ tends to 0 as n tends to $\infty$, which we will use henceforth.\\
+Note that the result that $P[X \ge (1+\delta)\mu] \le e^{\frac{-\mu\delta^2}{2+\delta}}$ was not proven without referring to the internet, so I will prove the claim above using an alternative method which assumes only what has been proven by me.\\
+\begin{align*}
+    P[X \ge (1+\delta)\mu] \le e^{\mu(\delta-(1+\delta)\ln(1+\delta))}
+\end{align*}
+We want to prove that $f(\delta)=\delta-(1+\delta)\ln(1+\delta)$ is strictly negative if $\delta$ is positive. For that, notice that $f(0)=0$ and $f'(\delta)=-\ln(1+\delta)$, which is non-positive for all non-negative $\delta$. Thus, $f(\delta)$ is strictly negative for all positive $\delta$.\\
+This again means that $P[B_n \ge n\epsilon + n\mu] \le e^{-nk}$ for some positive coefficient k. Thus, $P[B_n \ge n\epsilon + n\mu]$ tends to 0 as n tends to $\infty$.\\
+Similarly, $P[B_n \le n\mu - n\epsilon]$ also tends to 0 as n tends to $\infty$.\\
+We can prove this by considering the RV $1-A_n$ instead of $A_n$ and using the same logic as above. $P[n-B_n - n-n\mu \ge n\delta] = P[n\mu - nB_n \ge n\delta] \le e^{-nk}$ for some positive coefficient k.\\
+Now, combining the two results,
+\begin{align*}
+    P[\lvert B_n - n\mu\rvert > n\epsilon] &\le P[B_n - n\mu \ge n\epsilon] + P[n\mu - B_n \ge n\epsilon]\\
+    &\le e^{-nk} + e^{-nk'} && \text{(for some positive coefficients k and k')}\\
+\end{align*}
+If we get any positive value $\sigma$ for the value of $P[\lvert B_n - n\mu\rvert > n\epsilon]$, simply set $n > \max(\frac{\ln(\frac{2}{\sigma})}{k}, \frac{\ln(\frac{2}{\sigma})}{k'})$ and we have
+\begin{align*}
+    P[\lvert B_n - n\mu\rvert > n\epsilon] &\le e^{-nk} + e^{-nk'}\\
+    &< \frac{\sigma}{2} + \frac{\sigma}{2}\\
+    &= \sigma
+\end{align*}
+which is a contradiction.\\
+Thus, we have proven that $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=0$.\\
