@@ -1,0 +1,155 @@
+\section{Quality in Inequalities}
+
+\subsection{Task A}
+
+\begin{align*}
+    \mathbb{E}[X] & =\int_{0}^{\infty} X P(X) \, dX \\
+    & =\int_{0}^a X P(X) \, dX + \int_{a}^{\infty} X P(X) \, dX \\
+    & \ge \int_{0}^{a} X P(X) \, dX + \int_{a}^{\infty} a P(X) \, dX \\
+    & \ge \int_{0}^{a} X P(X) \, dX + a P[X \ge a] \\
+    & \ge a P[X \ge a] \\
+\end{align*}
+Here, we have used the fact that $\int_{0}^{a} X P(X) dX$ is $\ge 0$ since $X \ge 0$ and $P(X) \ge 0$ everywhere in that interval.\\
+From the above result, we get
+\[
+    \frac{\mathbb{E}[X]}{a} \ge P[X \ge a]
+\]
+Intuitively, this corresponds to saying that if there is a high probability that $X \ge a$, then we can also expect that a random sample will give us a value greater than a.
+\subsection{Task B}
+First, we will prove a result which is useful later
+\begin{align*}
+    \mathbb{E}[\left(X-\mathbb{E}[X]+\frac{\sigma^2}{\tau}\right)^2]=Var(X-\mathbb{E}[X]+\frac{\sigma^2}{\tau})+\left(E[X-\mathbb{E}[X]+\frac{\sigma^2}{\tau}]\right)^2\\
+\end{align*}
+Now, since the variance of a distribution does not change on adding a constant to the distribution, and since the expectation value of the sum of terms is the sum of expectations of the terms, we get that this is equal to 
+\[
+    \mathbb{E}[\left(X-\mathbb{E}[X]+\frac{\sigma^2}{\tau}\right)^2]=\sigma^2+\left(\frac{\sigma^2}{\tau}\right)^2
+\]
+% \begin{align*}
+%     \frac{\mathbb{E}[(X-\mathbb{E}[X]+\frac{\sigma^2}{\tau})^2]}{(\tau+\frac{\sigma^2}{\tau})^2}
+% \end{align*}
+Now, we notice that whenever $X-\mu \ge \tau$, it also holds that $\left(X-\mu+\frac{\sigma^2}{\tau}\right)^2\ge\left(\tau +\frac{\sigma^2}{\tau}\right)^2$. Since we are assuming that $x-\mu+\frac{\sigma^2}{\tau}\ge \tau+\frac{\sigma^2}{\tau} \ge 0$, this result is proven by the fact that $x^2$ is an increasing function over the non-negative reals.\\
+Thus, $P[X-\mu \ge \tau] \le P[\left(X-\mu+\frac{\sigma^2}{\tau}\right)^2\ge\left(\tau +\frac{\sigma^2}{\tau}\right)^2]$.\\
+Using Markov's inequality on the above result, we get
+\begin{align*}
+    P[X-\mu \ge \tau] \le P[\left(X-\mu+\frac{\sigma^2}{\tau}\right)^2&\le\left(\tau +\frac{\sigma^2}{\tau}\right)^2]\le \frac{\sigma^2+\left(\frac{\sigma^2}{\tau}\right)^2}{\left(\tau+\frac{\sigma^2}{\tau}\right)^2}\\
+    &=\frac{\sigma^2}{\sigma^2+\tau^2}
+\end{align*}
+Thus proving our desired result.
+\subsection{Task C}
+\begin{align*}
+    P[X\ge x] = \int_{x}^{\infty} P(X) \, dX
+\end{align*}
+\begin{align*}
+    e^{-tx}E[e^{tx}] & = e^{-tx} \int_{-\infty}^{\infty} e^{tX} P(X) \, dX && \\
+    & = e^{-tx}\int_{-\infty}^x e^{tX} P(X) \, dX + e^{-tx}\int_{x}^{\infty} e^{tX} P(X) \, dX && \\
+    & \ge e^{-tx} \int_{x}^{\infty} e^{tX} P(X) \, dX && \text{(since both P(X) and $e^{tX}$ are positive for all X)}\\
+    & \ge e^{-tx}  e^{tx} \int_{x}^{\infty} P(X) \, dX &&\text{(since $e^{tX}$ is increasing if t>0)}\\
+    & = e^{-tx} e^{tx} P[X \ge x] && \\
+    & = P[X \ge x] &&
+\end{align*}
+This proves that 
+\begin{equation}
+    \label{eq:1}
+    P[X\ge x] \le e^{-tx}E[e^{tx}]
+\end{equation}
+Similarly, 
+\[
+    P[X\le x] = \int_{-\infty}^{x} P(X) \, dX
+\]
+\begin{align*}
+    e^{-tx}E[e^{tx}] & = e^{-tx} \int_{-\infty}^{\infty} e^{tX} P(X) \, dX && \\
+    & = e^{-tx}\int_{-\infty}^x e^{tX} P(X) \, dX + e^{-tx}\int_{x}^{\infty} e^{tX} P(X) \, dX && \\
+    & \ge e^{-tx} \int_{-\infty}^{x} e^{tX} P(X) \, dX && \text{(since both P(X) and $e^{tX}$ are positive for all X)}\\
+    & \ge e^{-tx}\cdot e^{tx} \cdot \int_{-\infty}^{x}P(X)\, dX && \text{(since $e^{tx} \le e^{tx'}$ where $x \ge x'$ when t is negative since $e^{-x}$ is a decreasing function)}\\
+    & = \int_{-\infty}^{x} P(X) \, dX && \\
+    & = P[X \le x] &&
+    \label{eq:1}
+\end{align*}
+as required.
+\subsection{Task D}
+\begin{enumerate}
+    \item We know, by the linearity of expectation, that \[
+        \mathbb{E}[Y]=\sum_{i=1}^{n}\mathbb{E}[X_i]=\sum_{i=1}^{n}p_i
+    \]
+    \item For this question, we make use of the first result proved in Task C above\ref{eq:1}. 
+    \begin{align*}       
+        \label{Hello}
+        P[Y\ge (1+\delta)\mu]&\le \frac{\mathbb{E}[e^{tY}]}{e^{(1+\delta)\mu t}}\\
+        &=\frac{\mathbb{E}[e^{\left(t \sum_{i=1}^n X_i\right)}]}{e^{(1+\delta)\mu t}}
+    \end{align*}
+    We will now prove that for independent random variables, $\mathbb{E}[e^{\left(t\sum_{i=1}^n X_i\right)}]=\prod_{i=1}^n \mathbb{E}[e^{tX_i}]$. To prove that, we prove the simpler result that for independent variables, $\mathbb{E}[XY]=\mathbb{E}[X]\mathbb{E}[Y]$.
+    \begin{align*}
+        \mathbb{E}[XY]&=\int_{-\infty}^{\infty}(xy)p_{X,Y}(x,y) \, dy \, dx\\
+        & = \int_{-\infty}^{\infty}(xy)p_X(x)p_Y(y) \, dy \, dx\\
+        &= \int_{-\infty}^{\infty}x p_X(x) \int_{-\infty}^{\infty}yp_Y(y) \, dy \, dx\\
+        &= \int_{-\infty}^{\infty}x p_X(x) \, dx \int_{-\infty}^{\infty}y p_Y(y) \, dy\\
+        &= \mathbb{E}[X]\mathbb{E}[Y]
+    \end{align*}
+    Since above, all $X_i$'s are independent, so are $e^{tX_i}$ for all i. Thus,
+    \begin{align*}
+        E[e^{\left(t \sum_{i=1}^n X_i\right)}]&=\mathbb{E}[e^{tX_1}]E[e^{\left(t \sum_{i=2}^n X_i\right)}]\\
+        &=\mathbb{E}[e^{tX_1}]\mathbb{E}[e^{tX_2}]\mathbb{E}[e^{\left(t \sum_{i=3}^n X_i\right)}]\\
+        &\cdots\\
+        &=\prod_{i=1}^n \mathbb{E}[e^{tX_i}]
+    \end{align*}
+    For each Bernoulli random variable $X_i$, it is easily observed that $E[e^{tX_i}]=1+(e^t-1)p_i$. Using this result,
+    \[
+        E[e^{\left(t \sum_{i=1}^n X_i\right)}]=\prod_{i=1}^n (1+(e^t-1)p_i)
+    \]
+    We will now prove $\prod_{i=1}^n (1+x_i) \le e^{\sum_{i=1}^n x_i}$ for positive $x_i$'s.
+    \begin{align*}
+        \ln\left(\prod_{i=1}^n (1+x_i)\right)&=\sum_{i=1}^n \ln(1+x_i)\\
+        &\le \sum_{i=1}^n x_i && \text{(Well known result that $\ln(1+x)\le x$)}\\
+        &= \ln\left(e^{\sum_{i=1}^n x_i}\right)
+    \end{align*}
+    Since our initial assumption in using \ref{eq:1} required $t>0$ and hence $e^t > 1$, all $(e^t-1)p_i$ values are positive and we can use the above result.
+    Hence, $\mathbb{E}[e^{tY}] \le e^{\mu (e^t-1)}$.\\
+    Plugging this into \ref{Hello}, we get
+    \[
+        P[Y\ge (1+\delta)\mu]\le \frac{e^{\mu(e^t-1)}}{e^{(1+\delta)t\mu}}
+    \]
+    as required.\\
+    % However,  $(1+\delta)^{1+\delta}$ can be simplified by taking its logarithm.
+    % \begin{align*}
+    %     \ln((1+\delta)^{1+\delta})&=(1+\delta)\ln(1+\delta)\\
+    %     &=(1+\delta)(\delta - \delta^2 )
+    % \end{align*}
+    \item Since this holds for arbitrary positive t, we can find the t for which the value of $e^{\mu e^t-1-(1+\delta)t}$ is minimum. By differentiation, we observe the minima of the function is when $t=\ln(1+\delta)$. At the minima, we have
+    \begin{align*}
+        e^t-1-(1+\delta)t = \delta-(1+\delta)\ln(1+\delta)\\
+        % P[Y\ge (1+\delta)\mu]\le \frac{e^{\delta\mu}}{(1+\delta)^{1+\delta}}    
+    \end{align*}
+    Using the expansion $\ln(1+\delta)=\sum_{i=1}^{\infty}\frac{\delta^i(-1)^{i-1}}{i}$,
+    \begin{align*}
+        \delta - (1+\delta)\ln(1+\delta) &= \delta + (1+\delta)(\sum_{i=1}^{\infty}\frac{\delta^i(-1)^i}{i})\\
+        &= \delta + \sum_{i=1}^{\infty}\frac{\delta^i(-1)^i}{i} + \sum_{i=2}^{\infty}\frac{\delta^{i}(-1)^{i-1}}{i-1}\\
+        &= \sum_{i=2}^{\infty} \frac{\delta^i(-1)^{i-1}}{i(i-1)}\\
+        % &= -\delta^2 \mu \sum_{i=0}^{\infty}\frac{(\delta^i)(-1)^i}{(i+2)(i+1)}
+    \end{align*}
+    This is approximately $-\frac{\delta^2}{2} + \frac{\delta^3}{6}$ for small delta. Thus we get a good upper bound of $e^{\frac{-\mu\delta^2(3-\delta)}{6}}$ for $P[Y\ge (1+\delta)\mu]$.\\
+    If $\delta > 0$, this can be simplified further, in a way that is more useful for us in question 5. Observe that for $x > 0$
+    \[
+        \ln(1+x) \ge \frac{2x}{2+x}
+    \]
+    This can be seen by observing that at x=0, $\ln(1+x)-\frac{2x}{2+x}$ evaluates to 0 and that its derivative, $\frac{4}{(1+x)(2+x)^2}$ is always non-negative.\\
+    Thus, 
+    \begin{align*}
+        \mu (\delta - (1+\delta)\ln(1+\delta)) &\le \mu (\delta - \frac{2\delta(1+\delta)}{2+\delta})\\
+        &= \frac{-\mu\delta^2}{2+\delta}
+    \end{align*}
+    Thus, we get,
+    \begin{equation}
+        \label{eq:2}
+        P[Y\ge (1+\delta)\mu] \le e^{\frac{-\mu\delta^2}{2+\delta}}
+    \end{equation}
+    For the last few steps of simplification, https://math.mit.edu/~goemans/18310S15/chernoff-notes.pdf was used as a guide.
+\end{enumerate}
+\subsection{Task E}
+Consider the random variable $B_n = nA_n$.\\
+We need to prove $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert> n\epsilon]=0$.\\
+Note that we are done if we prove $\lim_{n\to \infty}P[B_n - n\mu > n\epsilon]=0$ and $\lim_{n\to \infty}P[n\mu - B_n > n\epsilon]=0$.\\
+We will prove the first part first, assuming $\mu$ is not 0.\\
+\begin{align*}
+    P[B_n \ge n\epsilon + n\mu] &\le e^{-\frac{n\epsilon^2}{2\mu+\epsilon}}\\
+\end{align*}
+For a positive $\mu$ (since the distribution is the sum of Bernoulli RVs) and $\epsilon$ (given), $\frac{\epsilon^2}{2\mu+\epsilon}$ is a positive coefficient. $e^{-n}$ tends to 0 as n tends to $\infty$, which we will use henceforth.
