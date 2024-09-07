@@ -1,0 +1,82 @@
+\section{A Pretty “Normal" Mixture}
+\subsection{Task A}
+Let $A_i$ be the event in which you choose i in the first step of the algorithm. Then the set of all the $A_i$s is a valid partition, since they are completely disjoint and their union represents all the possibilities.\\
+    Hence we can use the \textit{law of Total Probability} to get,\\
+\begin{align*}
+    P[\mathcal{A}=x] &= \sum_{i=1}^{K} P[A_i]\cdot P[X_i=x] \\
+    &= \sum_{i=1}^{K} p_i\cdot P[X_i=x]\\
+    &=P[X=x]\\
+    \implies f_\mathcal{A}(x) &= f_X(x)
+\end{align*}
+\subsection{Task B}
+\subsubsection{Part 1}
+\begin{align*}
+    \mathbb{E}[X]&=\sum_{x\in \mathbb{Z}} \left(x \cdot \sum_{i=1}^{K} p_i\cdot P[X_i=x] \right) \\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \sum_{x\in \mathbb{Z}} x \cdot P[X_i=x]\right)\\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \mathbb{E}[X_i]\right) =\sum_{i=1}^{K} \left(p_i\cdot \mu_i\right) 
+\end{align*}
+\subsubsection{Part 2}
+\begin{itemize}
+\item Calculating $\mathbb{E}[X^2]$
+\begin{align*}
+    \mathbb{E}[X^2]&=\sum_{x\in \mathbb{Z}} \left(x^2 \cdot \sum_{i=1}^{K} p_i\cdot P[X_i=x] \right) \\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \sum_{x\in \mathbb{Z}} x^2 \cdot P[X_i=x]\right)\\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \mathbb{E}[X_i^2]\right)
+    =\sum_{i=1}^{K} \left(p_i\cdot \left(Var(X_i) + \left(\mathbb{E}[X_i]\right)^2\right)\right)\\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \left(\sigma_i^2 + \mu_i^2\right)\right)
+\end{align*}
+\item Calculating $\left(\mathbb{E}[X]\right)^2$
+\begin{align*}
+    \left(\mathbb{E}[X]\right)^2&=\left(\sum_{i=1}^{K} p_i\cdot \mathbb{E}[X_i]\right)^2\\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \mathbb{E}[X_i]\right)^2 + 2 \sum_{1\leq i<j\leq K} \left(p_i\cdot \mathbb{E}[X_i] \cdot p_j\cdot \mathbb{E}[X_j]\right)  \\
+    &=\sum_{i=1}^{K} \left(p_i \mu_i\right)^2 + 2 \sum_{1\leq i<j\leq K} \left(p_i \mu_i  p_j \mu_j\right)
+\end{align*}
+\item Calculating Var[X]
+\begin{align*}
+    Var[X]&=\left(\mathbb{E}[X]\right)^2-\mathbb{E}[X^2]\\
+    &=\left(\sum_{i=1}^{K} \left(p_i \mu_i\right)^2 + 2 \sum_{1\leq i<j\leq K} \left(p_i \mu_i  p_j \mu_j\right)\right) - \sum_{i=1}^{K} \left(p_i\cdot \left(\sigma_i^2 + \mu_i^2\right)\right)
+\end{align*}
+\end{itemize}
+\subsubsection{Part 3}
+    \begin{align*}
+        M_X(t)=G(e^t)&=\int_{-\infty}^{\infty} e^{xt}P[X=x]dx = \int_{-\infty}^{\infty} e^{xt} \sum_{i=1}^{K}p_iP[X_i=x]dx\\
+        &= \int_{-\infty}^{\infty}\sum_{i=1}^{K} e^{xt} p_i P[X_i=x]dx = \sum_{i=1}^{K} p_i\int_{-\infty}^{\infty}e^{xt} P[X_i=x]dx\\
+        &= \sum_{i=1}^{K} p_i M_{X_i} = \sum_{i=1}^{K} p_i e^{\mu_it+\frac{1}{2}\sigma_i^2t^2} 
+    \end{align*}
+\subsection{Task C}
+\subsubsection{Part 1}
+    \begin{align*}
+        \mathbb{E}[Z]&=\mathbb{E}\left[ \sum_{i=1}^K p_iX_i\right]=\sum_{i=1}^K p_i \cdot \mathbb{E}\left[ X_i\right]=\sum_{i=1}^{K} \left(p_i\mu_i\right)\\
+    \end{align*}
+
+\subsubsection{Part 2}
+    \begin{align*}
+        Var(Z)&=Var\left(\sum_{i=1}^K p_iX_i\right)=\sum_{i=1}^K Var\left(p_iX_i\right)=\sum_{i=1}^K p_i^2Var\left(X_i\right)=\sum_{i=1}^K p_i^2\sigma_i^2
+    \end{align*}
+\subsubsection{Part 3}
+    Since we already calculated $\mu_Z$ and $\sigma_Z = \sqrt{Var(Z)}$ We can just use the expression for Gaussian Random Variable (See Part 6 for the proof that Z is a Gaussian random variable)
+    \begin{align*}
+        f_Z(u)=\frac{1}{\sigma_Z\sqrt{2\pi}}e^{\frac{-\left(u-\mu_Z\right)^2}{2\sigma_Z^2}}
+    \end{align*}
+\subsubsection{Part 4}
+    Using the expression for Moment generating function of a Gaussian Random Variable (See Part 6 for the proof that Z is a gaussian random variable)
+    \begin{align*}
+        M_Z(t) = e^{\mu_Z t +\frac{1}{2}\sigma_Z^2t^2}
+    \end{align*}
+\subsubsection{Part 5}
+    No, It can be seen that even though the expected value is the same in both the case, The values of both variance and MGF are different for both X and Z hence these are different random variables
+\subsubsection{Part 6}
+    We can show that linear combination of independent random variables is also a random variable. For any random Gaussian variable $X$ is given by $M_X(t)=\mathbb{E}[e^{tX}]=e^{\mu t+\frac{1}{2} \sigma^2t^2}$\\
+    Let $Y=\sum_{i=1}^K a_i X_i$ where each $X_i$ is an independent Gaussian random variable.Then 
+    \begin{align*}
+        M_Y(t) &= \mathbb{E}[e^{tY}]= \mathbb{E}\left[e^{t\sum_{i=1}^K a_i X_i}\right] = \mathbb{E}\left[\prod_{i=1}^Ke^{ta_i X_i}\right]\\
+        &=\prod_{i=1}^K\mathbb{E}\left[e^{ta_i X_i}\right] \hspace{15mm} \text{ ,Since all the $X_i$ are mutually independent}\\
+        &= \prod_{i=1}^KM_{a_iX_i}(t) =\prod_{i=1}^K\left(  e^{a_i\mu_i t+\frac{1}{2} (a_i\sigma_i)^2t^2}\right) = exp\left({\sum_{i=1}^K(a_i\mu_i) t+\frac{1}{2} \sum_{i=1}^K((a_i\sigma_i)^2)t^2}\right)\\
+    \end{align*}
+    If we define $\mu_y = \sum_{i=1}^K(a_i\mu_i)\text{ and }\sigma_y^2 = \sum_{i=1}^K((a_i\sigma_i)^2)$ Then we get 
+    \begin{equation}
+        M_y(t) = e^{\mu_y t+\frac{1}{2} \sigma_y^2t^2}
+    \end{equation}
+    This is just the Moment generating function of a Gaussian random variable, Hence Y is a Gaussian random variable. Hence Z is also a Gaussian random variable.
+
+    
