@@ -60,7 +60,7 @@ Similarly,
     e^{-tx}E[e^{tx}] & = e^{-tx} \int_{-\infty}^{\infty} e^{tX} P(X) \, dX && \\
     & = e^{-tx}\int_{-\infty}^x e^{tX} P(X) \, dX + e^{-tx}\int_{x}^{\infty} e^{tX} P(X) \, dX && \\
     & \ge e^{-tx} \int_{-\infty}^{x} e^{tX} P(X) \, dX && \text{(since both P(X) and $e^{tX}$ are positive for all X)}\\
-    & \ge e^{-tx}\cdot e^{tx} \cdot \int_{-\infty}^{x}P(X)\, dX && \text{(since $e^{tx} \le e^{tx'}$ where $x \ge x'$ when t is negative since $e^{-x}$ is a decreasing function)}\\
+    & \ge e^{-tx}\cdot e^{tx} \cdot \int_{-\infty}^{x}P(X)\, dX && \text{(since $e^{tx} \le e^{tx'}$ where $x \ge x'$ when t is negative)}\\
     & = \int_{-\infty}^{x} P(X) \, dX && \\
     & = P[X \le x] &&
     \label{eq:1}
