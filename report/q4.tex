@@ -175,4 +175,4 @@ If we get any positive value $\sigma$ for the value of $P[\lvert B_n - n\mu\rver
     &= \sigma
 \end{align*}
 which is a contradiction.\\
-Thus, we have proven that $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=\lim_{n\to \infty}P[\lvert A_n - \mu\rvert > \epsilon]=0$.\\
+But, for all finite n, it holds that whenver $\lvert B_n-n\mu\rvert > n\delta$, we also know by the definition of $B_n$ that $\lvert A_n-\mu\rvert > \delta$. Thus, $P[\lvert B_n-n\mu\rvert > n\delta] \ge P[\lvert A_n-\mu\rvert > \delta] \ge 0$. As this is a sandwiched limit, by the Sandwich theorem for limits, we have proven that $\lim_{n\to \infty}P[\lvert B_n - n\mu\rvert > n\epsilon]=\lim_{n\to \infty}P[\lvert A_n - \mu\rvert > \epsilon]=0$.\\
