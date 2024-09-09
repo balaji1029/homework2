@@ -53,6 +53,7 @@ Let $A_i$ be the event in which you choose i in the first step of the algorithm.
     \begin{align*}
         Var(Z)&=Var\left(\sum_{i=1}^K p_iX_i\right)=\sum_{i=1}^K Var\left(p_iX_i\right)=\sum_{i=1}^K p_i^2Var\left(X_i\right)=\sum_{i=1}^K p_i^2\sigma_i^2
     \end{align*}
+    Here, we are using the fact that the variance operator is additive over independent random variables. All the Gaussians whose weighted sum is being taken are obviously independent.\\
 \subsubsection{Part 3}
     Since we already calculated $\mu_Z$ and $\sigma_Z = \sqrt{Var(Z)}$ We can just use the expression for Gaussian Random Variable (See Part 6 for the proof that Z is a Gaussian random variable)
     \begin{align*}
