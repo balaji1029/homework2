@@ -74,6 +74,7 @@ Let $A_i$ be the event in which you choose i in the first step of the algorithm.
         &=\prod_{i=1}^K\mathbb{E}\left[e^{ta_i X_i}\right] \hspace{15mm} \text{ ,Since all the $X_i$ are mutually independent}\\
         &= \prod_{i=1}^KM_{a_iX_i}(t) =\prod_{i=1}^K\left(  e^{a_i\mu_i t+\frac{1}{2} (a_i\sigma_i)^2t^2}\right) = \exp\left({\sum_{i=1}^K(a_i\mu_i) t+\frac{1}{2} \sum_{i=1}^K((a_i\sigma_i)^2)t^2}\right)\\
     \end{align*}
+    For a proof that the expectation of a product of independent random variables is equal to the product of their expectations, look at \ref{ref:10}.\\
     If we define $\mu_y = \sum_{i=1}^K(a_i\mu_i)\text{ and }\sigma_y^2 = \sum_{i=1}^K((a_i\sigma_i)^2)$ Then we get 
     \begin{equation}
         M_y(t) = e^{\mu_y t+\frac{1}{2} \sigma_y^2t^2}
@@ -92,7 +93,7 @@ To prove the other direction, let us assume that we can find two distinct soluti
 \]
 If any of the $x_i$'s are not equal to any of the $y_j$'s, and given that all $p(x_i)$'s and $p(y_j)$'s are non-zero, then we can rearrange the terms to get that for some $a_i$'s
 \[
-    e^{a_0}t b_0 = \sum_{i=1}^k e^{a_i}t b_i
+    e^{a_0t} b_0 = \sum_{i=1}^k e^{a_it} b_i
 \]
 for some non-zero coefficients $b_0$ and for some k, and all $a_i$'s being distinct. Now, note that the LHS has an annihilating polynomial $D-a_0$, where $D$ is the derivative operator w.r.t t. The RHS has an annhitating polynomial $(D-a_1)\cdots(D-a_k)$. Since the LHS equals the RHS, if an operator makes the LHS 0, it also makes the RHS zero. Thus, the LHS ($e^{a_0t}b_0$) is also annhilated by the annhilator of the RHS.
 \begin{align*}

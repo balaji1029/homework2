@@ -31,7 +31,7 @@ Now, we notice that whenever $X-\mu \ge \tau$, it also holds that $\left(X-\mu+\
 Thus, $P[X-\mu \ge \tau] \le P[\left(X-\mu+\frac{\sigma^2}{\tau}\right)^2\ge\left(\tau +\frac{\sigma^2}{\tau}\right)^2]$.\\
 Using Markov's inequality on the above result, we get
 \begin{align*}
-    P[X-\mu \ge \tau] \le P[\left(X-\mu+\frac{\sigma^2}{\tau}\right)^2&\le\left(\tau +\frac{\sigma^2}{\tau}\right)^2]\le \frac{\sigma^2+\left(\frac{\sigma^2}{\tau}\right)^2}{\left(\tau+\frac{\sigma^2}{\tau}\right)^2}\\
+    P[X-\mu \ge \tau] \le P[\left(X-\mu+\frac{\sigma^2}{\tau}\right)^2&\ge\left(\tau +\frac{\sigma^2}{\tau}\right)^2]\le \frac{\sigma^2+\left(\frac{\sigma^2}{\tau}\right)^2}{\left(\tau+\frac{\sigma^2}{\tau}\right)^2}\\
     &=\frac{\sigma^2}{\sigma^2+\tau^2}
 \end{align*}
 Thus proving our desired result.
@@ -85,6 +85,11 @@ as required.
         &= \int_{-\infty}^{\infty}x p_X(x) \, dx \int_{-\infty}^{\infty}y p_Y(y) \, dy\\
         &= \mathbb{E}[X]\mathbb{E}[Y]
     \end{align*}
+    Thus,
+    \begin{equation*}
+        \label{ref:10}
+        \mathbb{E}[XY] = \mathbb{E}[X]\mathbb{E}[Y]
+    \end{equation*}
     Since above, all $X_i$'s are independent, so are $e^{tX_i}$ for all i. Thus,
     \begin{align*}
         E[e^{\left(t \sum_{i=1}^n X_i\right)}]&=\mathbb{E}[e^{tX_1}]E[e^{\left(t \sum_{i=2}^n X_i\right)}]\\
