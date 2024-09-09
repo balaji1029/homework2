@@ -71,12 +71,12 @@ as required.
     \item We know, by the linearity of expectation, that \[
         \mathbb{E}[Y]=\sum_{i=1}^{n}\mathbb{E}[X_i]=\sum_{i=1}^{n}p_i
     \]
-    \item For this question, we make use of the first result proved in Task C above\ref{eq:1}. 
+    \item For this question, we make use of the first result proved in Task C above[\ref{eq:1}]. 
     \begin{align*}       
         \label{Hello}
         P[Y\ge (1+\delta)\mu]&\le \frac{\mathbb{E}[e^{tY}]}{e^{(1+\delta)\mu t}}\\
         &=\frac{\mathbb{E}[e^{\left(t \sum_{i=1}^n X_i\right)}]}{e^{(1+\delta)\mu t}}
-    \end{align*}options
+    \end{align*}
     We will now prove that for independent random variables, $\mathbb{E}[e^{\left(t\sum_{i=1}^n X_i\right)}]=\prod_{i=1}^n \mathbb{E}[e^{tX_i}]$. To prove that, we prove the simpler result that for independent variables, $\mathbb{E}[XY]=\mathbb{E}[X]\mathbb{E}[Y]$.
     \begin{align*}
         \mathbb{E}[XY]&=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}(xy)p_{X,Y}(x,y) \, dy \, dx\\
