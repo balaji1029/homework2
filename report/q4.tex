@@ -99,12 +99,12 @@ as required.
     We will now prove $\prod_{i=1}^n (1+x_i) \le e^{\sum_{i=1}^n x_i}$ for positive $x_i$'s.
     \begin{align*}
         \ln\left(\prod_{i=1}^n (1+x_i)\right)&=\sum_{i=1}^n \ln(1+x_i)\\
-        &\le \sum_{i=1}^n x_i && \text{(Well known result that $\ln(1+x)\le x$)}\\
+        &\le \sum_{i=1}^n x_i && \text{(Well known result that $\ln(1+x)\le x$ in these conditions)}\\
         &= \ln\left(e^{\sum_{i=1}^n x_i}\right)
     \end{align*}
     Since our initial assumption in using \ref{eq:1} required $t>0$ and hence $e^t > 1$, all $(e^t-1)p_i$ values are positive and we can use the above result.
     Hence, $\mathbb{E}[e^{tY}] \le e^{\mu (e^t-1)}$.\\
-    Plugging this into \ref{Hello}, we get
+    Plugging this into \ref{eq:1}, we get
     \[
         P[Y\ge (1+\delta)\mu]\le \frac{e^{\mu(e^t-1)}}{e^{(1+\delta)t\mu}}
     \]
