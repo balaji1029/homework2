@@ -13,7 +13,7 @@ Code provided in 2c.ipynb.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{../images/2c.png}
-    \caption{Histogram of the samples generated}
+    \caption{Plot of the samples generated}
     \label{fig:2c}
 \end{figure}
 
@@ -45,8 +45,8 @@ Applying Stirling's approximations,
 \begin{align*}
     P_h[X=2j] &\approx \frac{k^{2k}\sqrt{4\pi k}}{(k+j)^{k+j}\sqrt{2\pi (k+j)}(k-j)^{k-j}\sqrt{2\pi (k-j)}}\\
     &\approx \frac{k^{2k}\sqrt{2k}(k-j)^j}{(k^2-j^2)^{k}\sqrt{2\pi (k^2-j^2)}(k+j)^j}\\
-    &\approx \frac{1}{\sqrt{\pi k}}\frac{k^{2k}(k-j)^{j}}{(k^2)^k(k+j)^{j}} && \text{(By approximating $k^2 - j^2 \approx j^2$)}\\
-    &= \frac{1}{\sqrt{\pi k}}\left(1-\frac{2j}{k+j}\right)^j
+    &\approx \frac{1}{\sqrt{\pi k}}\frac{k^{2k}(k-j)^{j}}{(k^2)^k(k+j)^{j}\left(1-\frac{j^2}{k^2}\right)^k} \\
+    &= \frac{1}{\sqrt{\pi k}\left(1-\frac{j^2}{k^2}\right)^k}\left(1-\frac{2j}{k+j}\right)^j
 \end{align*}
 
 Now, we independently approximate $\left(1-\frac{2j}{k+j}\right)^j$ by taking its logarithm and using the property that for small x, $\ln(1-x) \approx -x$.
@@ -55,9 +55,18 @@ Now, we independently approximate $\left(1-\frac{2j}{k+j}\right)^j$ by taking it
     &\approx -\frac{2j^2}{k+j}\\
     \left(1-\frac{2j}{k+j}\right)^j&\approx e^{-\frac{2j^2}{k}}\\
 \end{align*}
+Similarly, 
+\begin{align}
+    \left(1-\frac{j^2}{k^2}\right)^k \approx e^{\frac{-j^2}{k}}\\
+    \frac{1}{\left(1-\frac{j^2}{k^2}\right)^k} \approx e^{\frac{j^2}{k}}
+\end{align}
+Combining the terms we have got so far, we get
+\[
+    P_h[X=2j]\approx \frac{1}{\sqrt{\pi k}}e^{\frac{-j^2}{k}}
+\]
+
 Setting $i=2j$ as required, we get 
 \begin{align*}
-    P_h[X=i]&\approx \frac{1}{\sqrt{\pi k}}e^{-\frac{i^2}{2k}}\\
-    &= \frac{1}{\sqrt{\pi k}}e^{-\frac{i^2}{h}}
+    P_h[X=i]&\approx \frac{1}{\sqrt{\pi k}}e^{-\frac{i^2}{4k}}\\
 \end{align*}
 As required.
