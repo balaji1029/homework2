@@ -1,11 +1,24 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{subcaption}
+\usepackage{fancyhdr}
+
+\geometry{left=1.25in}
+
+\pagestyle{fancy}
+% \fancyhead{}
+% \fancyfoot{}
+
+\fancyhead[RO, RE]{Aditya, Balaji, Moulik}
+\fancyhead[LO, LE]{\leftmark}
+
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 
 \graphicspath{../images/}
 
@@ -28,6 +41,7 @@
 
 \input{q1}
 \input{q2}
+\input{q3}
 \input{q4}
 \input{q5}
 
