@@ -43,7 +43,7 @@ Thus proving our desired result.
     e^{-tx}E[e^{tx}] & = e^{-tx} \int_{-\infty}^{\infty} e^{tX} P(X) \, dX && \\
     & = e^{-tx}\int_{-\infty}^x e^{tX} P(X) \, dX + e^{-tx}\int_{x}^{\infty} e^{tX} P(X) \, dX && \\
     & \ge e^{-tx} \int_{x}^{\infty} e^{tX} P(X) \, dX && \text{(since both P(X) and $e^{tX}$ are positive for all X)}\\
-    & \ge e^{-tx}  e^{tx} \int_{x}^{\infty} P(X) \, dX &&\text{(since $e^{tX}$ is increasing if t>0)}\\
+    & \ge e^{-tx}  e^{tx} \int_{x}^{\infty} P(X) \, dX &&\text{(since $e^{tX}$ is increasing if $t>0$)}\\
     & = e^{-tx} e^{tx} P[X \ge x] && \\
     & = P[X \ge x] &&
 \end{align*}
