@@ -21,8 +21,8 @@ Let $A_i$ be the event in which you choose i in the first step of the algorithm.
 \begin{align*}
     \mathbb{E}[X^2]&=\sum_{x\in \mathbb{Z}} \left(x^2 \cdot \sum_{i=1}^{K} p_i\cdot P[X_i=x] \right) \\
     &=\sum_{i=1}^{K} \left(p_i\cdot \sum_{x\in \mathbb{Z}} x^2 \cdot P[X_i=x]\right)\\
-    &=\sum_{i=1}^{K} \left(p_i\cdot \mathbb{E}[X_i^2]\right)
-    =\sum_{i=1}^{K} \left(p_i\cdot \left(Var(X_i) + \left(\mathbb{E}[X_i]\right)^2\right)\right)\\
+    &=\sum_{i=1}^{K} \left(p_i\cdot \mathbb{E}_i[X_i^2]\right)
+    =\sum_{i=1}^{K} \left(p_i\cdot \left(Var(X_i) + \left(\mathbb{E}_i[X_i]\right)^2\right)\right)\\
     &=\sum_{i=1}^{K} \left(p_i\cdot \left(\sigma_i^2 + \mu_i^2\right)\right)
 \end{align*}
 \item Calculating $\left(\mathbb{E}[X]\right)^2$
@@ -41,7 +41,7 @@ Let $A_i$ be the event in which you choose i in the first step of the algorithm.
     \begin{align*}
         M_X(t)=G(e^t)&=\int_{-\infty}^{\infty} e^{xt}P[X=x]dx = \int_{-\infty}^{\infty} e^{xt} \sum_{i=1}^{K}p_iP[X_i=x]dx\\
         &= \int_{-\infty}^{\infty}\sum_{i=1}^{K} e^{xt} p_i P[X_i=x]dx = \sum_{i=1}^{K} p_i\int_{-\infty}^{\infty}e^{xt} P[X_i=x]dx\\
-        &= \sum_{i=1}^{K} p_i M_{X_i} = \sum_{i=1}^{K} p_i e^{\mu_it+\frac{1}{2}\sigma_i^2t^2} 
+        &= \sum_{i=1}^{K} p_i M_{X_i}(t) = \sum_{i=1}^{K} p_i e^{\mu_it+\frac{1}{2}\sigma_i^2t^2} 
     \end{align*}
 \subsection{Task C}
 \subsubsection{Part 1}
